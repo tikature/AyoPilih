@@ -1,0 +1,151 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --background: 0 0% 100%;
+  --foreground: 0 0% 1%;
+
+  --card: 0 0% 100%;
+  --card-foreground: 0 0% 1%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 0 0% 1%;
+
+  --primary: 0 75% 45%;          /* #C81D1D */
+  --primary-foreground: 0 0% 100%;
+  --primary-hover: 358 57% 32%;  /* #7E2326 */
+
+  --secondary: 0 3% 85%;         /* #DAD8D8 */
+  --secondary-foreground: 0 0% 1%;
+
+  --muted: 0 3% 92%;
+  --muted-foreground: 30 1% 44%; /* #71706F */
+
+  --accent: 0 3% 85%;
+  --accent-foreground: 0 0% 1%;
+
+  --destructive: 0 75% 45%;
+  --destructive-foreground: 0 0% 100%;
+
+  --success: 142 72% 29%;
+  --warning: 33 92% 37%;
+  --info: 224 76% 40%;
+
+  --border: 220 2% 66%;          /* #A8A9AB */
+  --input: 220 2% 66%;
+  --ring: 0 75% 45%;
+
+  --radius: 0.5rem;
+
+  /* Overridden per tenant by app/_tenant/[slug]/layout.tsx */
+  --tenant: 0 75% 45%;
+  --tenant-foreground: 0 0% 100%;
+}
+
+.dark {
+  --background: 0 0% 1%;
+  --foreground: 0 3% 92%;
+  --card: 0 0% 6%;
+  --card-foreground: 0 3% 92%;
+  --popover: 0 0% 6%;
+  --popover-foreground: 0 3% 92%;
+  --primary: 0 75% 50%;
+  --primary-foreground: 0 0% 100%;
+  --primary-hover: 358 57% 40%;
+  --secondary: 0 0% 14%;
+  --secondary-foreground: 0 3% 92%;
+  --muted: 0 0% 14%;
+  --muted-foreground: 220 2% 66%;
+  --accent: 0 0% 16%;
+  --accent-foreground: 0 3% 92%;
+  --destructive: 0 75% 50%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 30 1% 28%;
+  --input: 30 1% 28%;
+  --ring: 0 75% 50%;
+}
+
+@theme inline {
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-primary-hover: hsl(var(--primary-hover));
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --color-success: hsl(var(--success));
+  --color-warning: hsl(var(--warning));
+  --color-info: hsl(var(--info));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+  --color-tenant: hsl(var(--tenant));
+  --color-tenant-foreground: hsl(var(--tenant-foreground));
+
+  --font-display: var(--font-display), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-mono), ui-monospace, monospace;
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: var(--font-sans);
+  }
+  h1, h2, h3 {
+    font-family: var(--font-display);
+    @apply tracking-tight;
+  }
+  :focus-visible {
+    @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
+  }
+}
+
+@layer components {
+  /* Signature element: oversized candidate number bleeding off the card edge.
+     See DESIGN_SYSTEM.md §7. */
+  .candidate-number {
+    @apply pointer-events-none absolute -right-2 -top-4 select-none text-7xl font-extrabold leading-none text-secondary transition-colors duration-200;
+    font-family: var(--font-display);
+  }
+  [data-selected="true"] .candidate-number {
+    @apply text-tenant;
+  }
+
+  /* Tokens and receipt codes read as data, not prose. */
+  .code-display {
+    @apply font-mono text-xl tracking-[0.2em] uppercase;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@media print {
+  .no-print { display: none !important; }
+  body { @apply bg-white text-black; }
+}
