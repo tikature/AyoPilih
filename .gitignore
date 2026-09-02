@@ -52,9 +52,5 @@ coverage
 # Docs
 docs/
 
-agents.md
-design_system.md
-database_schema.sql
-project_blueprint.md
 saas_business_model.md
 security.md
