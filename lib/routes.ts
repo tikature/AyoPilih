@@ -82,9 +82,10 @@ export const adminSettings = () => "/admin/pengaturan";
 
 function rootDomain(): { protocol: string; host: string } {
   const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? "https://ayopilih.site";
-  const root = process.env.NEXT_PUBLIC_ROOT_DOMAIN ?? "ayopilih.site";
+  let root = process.env.NEXT_PUBLIC_ROOT_DOMAIN ?? "ayopilih.site";
+  if (root.includes("vercel.app")) root = "ayopilih.site";
   const base = new URL(appUrl);
-  return { protocol: base.protocol, host: base.host || root };
+  return { protocol: base.protocol, host: root };
 }
 
 /** Absolute URL into a tenant, e.g. for emails, WhatsApp, or QR codes. */

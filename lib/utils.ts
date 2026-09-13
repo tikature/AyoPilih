@@ -40,7 +40,7 @@ export function tenantUrl(slug: string, path = ""): string {
   const root = process.env.NEXT_PUBLIC_ROOT_DOMAIN ?? "ayopilih.site";
   const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? `https://${root}`;
   const base = new URL(appUrl);
-  return `${base.protocol}//${slug}.${base.host}${path}`;
+  return `${base.protocol}//${slug}.${root}${path}`;
 }
 
 export function percentage(part: number, total: number): number {
