@@ -125,7 +125,7 @@ export default async function PaketSettingsPage({
           Untuk melakukan upgrade ke paket <strong>Pro</strong> atau <strong>Enterprise</strong> dengan kapasitas pemilih yang lebih besar, fitur kustomisasi warna tema, kirim token otomatis via Email & WhatsApp, dan ekspor berita acara PDF berkop, silakan hubungi administrator AyoPilih melalui:
         </p>
         <div className="rounded-2xl border border-border bg-background p-4 space-y-2 text-sm">
-          <p>📧 Email: <a href="mailto:support@ayopilih.id" className="text-primary hover:underline">support@ayopilih.id</a></p>
+          <p>📧 Email: <a href="mailto:support@ayopilih.site" className="text-primary hover:underline">support@ayopilih.site</a></p>
           <p>💬 WhatsApp: <span className="font-semibold">+62 812-3456-7890</span></p>
         </div>
         <p className="text-xs text-muted-foreground">

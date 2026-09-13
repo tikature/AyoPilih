@@ -84,7 +84,7 @@ Jangan tampilkan "Forbidden". Tampilkan: **apa batasnya, posisi sekarang, dan ja
 ## 3. LABEL "DIDUKUNG AYOPILIH"
 
 Tampil di footer halaman pemilih untuk paket Starter & Pro:
-`Didukung oleh AyoPilih` (tautan ke `ayopilih.id`, teks kecil, `text-muted-foreground`, tidak mengganggu). Ini kanal akuisisi utama — setiap pemilih adalah calon panitia di organisasi lain.
+`Didukung oleh AyoPilih` (tautan ke `ayopilih.site`, teks kecil, `text-muted-foreground`, tidak mengganggu). Ini kanal akuisisi utama — setiap pemilih adalah calon panitia di organisasi lain.
 
 ---
 
@@ -94,7 +94,7 @@ Tampil di footer halaman pemilih untuk paket Starter & Pro:
 
 ```
 Panitia datang via rujukan / SEO
-   → Lihat landing ayopilih.id
+   → Lihat landing ayopilih.site
    → "Hubungi kami untuk mendaftarkan organisasimu" (email/WhatsApp)
    → Tim AyoPilih verifikasi kebutuhan
    → Super admin buat tenant + kirim undangan
@@ -153,7 +153,7 @@ Mulai Q3 2026, AyoPilih pindah dari model **self-serve** (panitia daftar sendiri
 
 ### Alur teknis
 
-1. **Panitia menghubungi tim AyoPilih** (email `hello@ayopilih.id` atau WhatsApp sales).
+1. **Panitia menghubungi tim AyoPilih** (email `hello@ayopilih.site` atau WhatsApp sales).
 2. **Tim AyoPilih memverifikasi** kebutuhan (skala pemilihan, jadwal hari-H, apakah perlu pendampingan).
 3. **Super admin login ke `/internal`**, klik kartu **"Buat Tenant Baru"**, isi:
    - Nama organisasi

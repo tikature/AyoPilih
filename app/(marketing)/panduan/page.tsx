@@ -6,7 +6,7 @@ const GUIDE_STEPS = [
     number: "01",
     title: "Daftar Akun & Buat Tenant",
     description:
-      "Buka halaman <strong>Daftar</strong>, isi email, kata sandi, nama lengkap, dan nama organisasi. Pilih subdomain unik (mis. <code>sman1</code>). Sistem otomatis membuat ruang tenant di <code>sman1.ayopilih.id</code>.",
+      "Buka halaman <strong>Daftar</strong>, isi email, kata sandi, nama lengkap, dan nama organisasi. Pilih subdomain unik (mis. <code>sman1</code>). Sistem otomatis membuat ruang tenant di subdomain tersebut.",
     details: [
       "Gunakan email aktif untuk notifikasi penting.",
       "Subdomain tidak bisa diubah setelah dibuat.",
@@ -50,7 +50,7 @@ const GUIDE_STEPS = [
     number: "05",
     title: "Buka & Pantau Pemilihan",
     description:
-      "Klik <strong>Publikasikan</strong> pada detail pemilihan (hanya bisa jika ≥ 2 paslon). Pemilihan berstatus <strong>SCHEDULED</strong> hingga jam mulai, lalu <strong>ONGOING</strong> secara otomatis. Bagikan link <code>sman1.ayopilih.id/pemilihan-osis/masuk</code> ke pemilih. Pantau realtime di <strong>Monitor</strong>.",
+      "Klik <strong>Publikasikan</strong> pada detail pemilihan (hanya bisa jika ≥ 2 paslon). Pemilihan berstatus <strong>SCHEDULED</strong> hingga jam mulai, lalu <strong>ONGOING</strong> secara otomatis. Bagikan link ke pemilih. Pantau realtime di <strong>Monitor</strong>.",
     details: [
       "Live count terlihat di dashboard panitia (Realtime).",
       "Hasil publik hanya jika <strong>Tampilkan Hasil Publik</strong> diaktifkan.",
@@ -120,10 +120,10 @@ export default function PanduanPage() {
           </p>
           <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:justify-center">
             <Link
-              href="mailto:support@ayopilih.id"
+              href="mailto:support@ayopilih.site"
               className="inline-flex h-11 items-center justify-center rounded-full border border-border bg-background px-5 font-semibold hover:bg-muted"
             >
-              Email: support@ayopilih.id
+              Email: support@ayopilih.site
             </Link>
             <a
               href="https://wa.me/6281234567890?text=Halo%20AyoPilih%2C%20saya%20butuh%20bantuan"

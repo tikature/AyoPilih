@@ -37,9 +37,10 @@ export function slugify(input: string): string {
 
 /** Builds an absolute tenant URL that works in dev and production. */
 export function tenantUrl(slug: string, path = ""): string {
-  const root = process.env.NEXT_PUBLIC_ROOT_DOMAIN ?? "localhost:3000";
-  const protocol = root.includes("localhost") ? "http" : "https";
-  return `${protocol}://${slug}.${root}${path}`;
+  const root = process.env.NEXT_PUBLIC_ROOT_DOMAIN ?? "ayopilih.site";
+  const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? `https://${root}`;
+  const base = new URL(appUrl);
+  return `${base.protocol}//${slug}.${base.host}${path}`;
 }
 
 export function percentage(part: number, total: number): number {

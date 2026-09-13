@@ -4,7 +4,7 @@
  * THE RULE
  * --------
  * Inside app/tenant/, the tenant slug lives in the SUBDOMAIN, not the path.
- * The browser sees:            sma5.ayopilih.id/haha/bilik
+ * The browser sees:            sma5.ayopilih.site/haha/bilik
  * Middleware rewrites it to:   /tenant/sma5/haha/bilik   (internal only)
  *
  * So `params.slug` exists in components, but it is for FETCHING DATA ONLY.
@@ -81,8 +81,10 @@ export const adminSettings = () => "/admin/pengaturan";
 // ---------------------------------------------------------------------
 
 function rootDomain(): { protocol: string; host: string } {
-  const host = process.env.NEXT_PUBLIC_ROOT_DOMAIN ?? "localhost:3000";
-  return { protocol: host.includes("localhost") ? "http" : "https", host };
+  const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? "https://ayopilih.site";
+  const root = process.env.NEXT_PUBLIC_ROOT_DOMAIN ?? "ayopilih.site";
+  const base = new URL(appUrl);
+  return { protocol: base.protocol, host: base.host || root };
 }
 
 /** Absolute URL into a tenant, e.g. for emails, WhatsApp, or QR codes. */

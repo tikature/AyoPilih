@@ -583,7 +583,7 @@ export async function regenerateVoterToken(
 
 async function sendEmailViaResend(to: string, name: string, token: string, electionTitle: string, inviteUrl: string) {
   const RESEND_API_KEY = process.env.RESEND_API_KEY!;
-  const FROM = process.env.EMAIL_FROM ?? "AyoPilih <noreply@ayopilih.id>";
+  const FROM = process.env.EMAIL_FROM ?? "AyoPilih <noreply@ayopilih.site>";
 
   const html = `
     <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
@@ -645,7 +645,7 @@ async function sendWhatsAppViaFonnte(phone: string, token: string, electionTitle
 
 async function sendEmailLinkOnly(to: string, name: string, electionTitle: string, inviteUrl: string) {
   const RESEND_API_KEY = process.env.RESEND_API_KEY!;
-  const FROM = process.env.EMAIL_FROM ?? "AyoPilih <noreply@ayopilih.id>";
+  const FROM = process.env.EMAIL_FROM ?? "AyoPilih <noreply@ayopilih.site>";
 
   const html = `
     <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">

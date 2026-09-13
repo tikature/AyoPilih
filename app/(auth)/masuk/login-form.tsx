@@ -12,7 +12,7 @@ export function LoginForm({ next }: { next?: string }) {
     if (value.startsWith("/") && !value.startsWith("//")) return true;
     try {
       const url = new URL(value);
-      const root = process.env.NEXT_PUBLIC_ROOT_DOMAIN ?? "localhost:3000";
+      const root = process.env.NEXT_PUBLIC_ROOT_DOMAIN ?? "ayopilih.site";
       const rootHost = root.split(":")[0];
       return url.host.endsWith(`.${rootHost}`) || url.host === rootHost;
     } catch {
@@ -58,7 +58,7 @@ export function LoginForm({ next }: { next?: string }) {
       </button>
       <div className="flex flex-col gap-2 text-center text-sm text-muted-foreground">
         <Link href="/lupa-sandi" className="font-semibold text-primary">Lupa kata sandi?</Link>
-        <p>Belum punya akun panitia? <a href="mailto:hello@ayopilih.id" className="font-semibold text-primary">Hubungi kami untuk mendaftarkan organisasimu</a></p>
+        <p>Belum punya akun panitia?           <a href="mailto:hello@ayopilih.site" className="font-semibold text-primary">Hubungi kami untuk mendaftarkan organisasimu</a></p>
       </div>
     </form>
   );

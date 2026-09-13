@@ -5,14 +5,14 @@ import type { CookieOptions } from "@supabase/ssr";
 /**
  * AyoPilih multi-tenant middleware.
  *
- * ayopilih.id            -> marketing site (no rewrite)
- * sman1.ayopilih.id      -> rewrite to /_tenant/sman1
- * sman1.localhost:3000   -> rewrite to /_tenant/sman1 (local dev)
+ * ayopilih.site           -> marketing site (no rewrite)
+ * sman1.ayopilih.site     -> rewrite to /_tenant/sman1
+ * sman1.localhost         -> rewrite to /_tenant/sman1 (local dev)
  *
  * Also refreshes the Supabase auth session cookie and guards /admin routes.
  */
 
-const ROOT_DOMAIN = process.env.NEXT_PUBLIC_ROOT_DOMAIN ?? "localhost:3000";
+const ROOT_DOMAIN = process.env.NEXT_PUBLIC_ROOT_DOMAIN ?? "ayopilih.site";
 
 // Subdomains that must never be treated as a tenant.
 const RESERVED = new Set([
@@ -35,7 +35,7 @@ function extractSubdomain(host: string): string | null {
   if (!hostname.endsWith(`.${rootHostname}`)) return null;
 
   const sub = hostname.slice(0, -(rootHostname.length + 1));
-  // Only single-level subdomains are tenants (a.b.ayopilih.id is not).
+  // Only single-level subdomains are tenants (a.b.ayopilih.site is not).
   if (!sub || sub.includes(".")) return null;
   if (RESERVED.has(sub)) return null;
 

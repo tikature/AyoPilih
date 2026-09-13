@@ -90,7 +90,7 @@ export default function HargaPage() {
                 "Pendampingan teknis hari-H",
               ]}
               ctaLabel="Hubungi Kami"
-              ctaHref="mailto:sales@ayopilih.id?subject=Paket%20Enterprise%20AyoPilih"
+              ctaHref="mailto:sales@ayopilih.site?subject=Paket%20Enterprise%20AyoPilih"
               ctaExternal={true}
               highlighted={false}
             />

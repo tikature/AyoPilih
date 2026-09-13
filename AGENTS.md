@@ -1,3 +1,4 @@
+
 # AGENTS.md — ATURAN KERJA UNTUK AI AGENT (opencode)
 
 File ini dibaca otomatis oleh opencode setiap sesi. Ringkas, tegas, jangan diabaikan.

@@ -12,7 +12,7 @@ export function RegisterForm() {
   const [isAvailable, setIsAvailable] = useState(false);
   const [error, setError] = useState("");
 
-  const previewUrl = useMemo(() => (slug ? tenantUrl(slug) : "namamu.localhost:3000"), [slug]);
+  const previewUrl = useMemo(() => (slug ? tenantUrl(slug) : `namamu.${process.env.NEXT_PUBLIC_ROOT_DOMAIN ?? "ayopilih.site"}`), [slug]);
 
   useEffect(() => {
     if (!slug) {
@@ -92,7 +92,7 @@ export function RegisterForm() {
             className="min-h-12 flex-1 bg-transparent outline-none"
             required
           />
-          <span className="flex items-center text-sm text-muted-foreground">.ayopilih.id</span>
+          <span className="flex items-center text-sm text-muted-foreground">.ayopilih.site</span>
         </div>
         <div className="mt-2 flex flex-col gap-1 text-sm sm:flex-row sm:items-center sm:justify-between">
           <p className={isAvailable ? "text-success" : "text-muted-foreground"}>{slugMessage}</p>

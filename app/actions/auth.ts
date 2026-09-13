@@ -133,7 +133,7 @@ export async function forgotPasswordAction(input: z.input<typeof forgotPasswordS
 
   const supabase = createAdminClient();
   const { error } = await supabase.auth.resetPasswordForEmail(parsed.data.email, {
-    redirectTo: `${process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000"}/masuk`,
+    redirectTo: `${process.env.NEXT_PUBLIC_APP_URL ?? "https://ayopilih.site"}/masuk`,
   });
 
   if (error) {

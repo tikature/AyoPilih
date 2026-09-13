@@ -1,5 +1,5 @@
 -- =====================================================================
--- AYOPILIH.ID — DATABASE SCHEMA (Supabase / PostgreSQL)
+-- AYOPILIH.SITE — DATABASE SCHEMA (Supabase / PostgreSQL)
 -- Jalankan di Supabase Dashboard > SQL Editor > New Query.
 -- Aman dijalankan ulang (idempotent) selama data belum produksi.
 -- =====================================================================

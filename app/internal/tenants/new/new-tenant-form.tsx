@@ -17,7 +17,7 @@ export function NewTenantForm() {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState<{ slug: string; email: string } | null>(null);
 
-  const previewUrl = slug ? tenantUrl(slug) : "namaorganisasi.ayopilih.id";
+  const previewUrl = slug ? tenantUrl(slug) : `namaorganisasi.${process.env.NEXT_PUBLIC_ROOT_DOMAIN ?? "ayopilih.site"}`;
 
   useEffect(() => {
     if (!slug) {
@@ -136,7 +136,7 @@ export function NewTenantForm() {
             className="min-h-12 flex-1 bg-transparent outline-none"
           />
           <span className="flex items-center text-sm text-muted-foreground">
-            .ayopilih.id
+            .ayopilih.site
           </span>
         </div>
         <div className="mt-2 flex flex-col gap-1 text-sm sm:flex-row sm:items-center sm:justify-between">

@@ -100,7 +100,7 @@ vote_hash = SHA-256( election_id + ":" + random_nonce_32byte )
 Ditampilkan ke pemilih dalam format terbaca: `AYP-4F2C-9K1D-B7E3`.
 
 Sifatnya:
-- ✅ Pemilih bisa cek di `ayopilih.id/cek` bahwa suaranya **tercatat** (ada di tabel).
+- ✅ Pemilih bisa cek di `ayopilih.site/cek` bahwa suaranya **tercatat** (ada di tabel).
 - ❌ Kode itu **tidak** menampilkan pilihan siapa. Endpoint verifikasi hanya mengembalikan: `{ tercatat: true, pemilihan: "...", waktu: "20 Agustus 2026" }`.
 - Alasan: kalau kode bisa membuktikan pilihan, itu membuka pintu jual-beli suara. Ini keputusan sadar, bukan keterbatasan.
 
@@ -203,8 +203,8 @@ Dashboard super admin dibuat untuk **operasional** (dukungan hari-H, billing, ke
 - **Tabel `platform_admins`** (terpisah dari `tenant_members`): berisi `user_id`, `email`, `is_active`. Hanya service role yang bisa akses (RLS `using (false)`).
 - **Helper `lib/platform-auth.ts`** (terpisah dari `lib/auth.ts`): memvalidasi user via `platform_admins` lewat service role, catat `SUPER_ADMIN_VISIT` ke audit log. Bukan 403 — **404** untuk non-super-admin (jangan bocorkan keberadaan halaman).
 - **Middleware `middleware.ts`**: memisahkan route:
-  - `/internal/**` HANYA di root domain (`ayopilih.id`). Akses dari subdomain tenant → 404.
-  - `/admin/**` HANYA di subdomain tenant (`sman1.ayopilih.id`). Akses dari root domain → 404.
+  - `/internal/**` HANYA di root domain (`ayopilih.site`). Akses dari subdomain tenant → 404.
+  - `/admin/**` HANYA di subdomain tenant (`sman1.ayopilih.site`). Akses dari root domain → 404.
 - **Bootstrap**: `scripts/bootstrap-superadmin.ts` — dijalankan sekali saat setup awal, baca `SUPER_ADMIN_EMAILS`, isi `platform_admins` dari user yang sudah register lewat `/daftar`. Jika sudah ada data, tolak (pakai `--force` untuk override).
 
 ### Yang TIDAK BOLEH disediakan antarmuka super admin

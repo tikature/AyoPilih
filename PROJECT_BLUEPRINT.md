@@ -34,7 +34,7 @@ Status: Slice 0 (belum ada kode)
 | Chart | recharts | Live count |
 | Parsing CSV/Excel | papaparse + xlsx (SheetJS) | Bulk upload DPT |
 | Notifikasi | sonner (toast) | |
-| Deployment | Vercel (Wildcard Subdomain `*.ayopilih.id`) | |
+| Deployment | Vercel (Wildcard Subdomain `*.ayopilih.site`) | |
 | Runtime hash | Web Crypto API (SHA-256) | Edge-compatible, bukan bcrypt |
 
 **Perintah setup awal (Slice 1):**
@@ -50,18 +50,18 @@ npm i -D @types/papaparse
 
 ## 3. ARSITEKTUR MULTI-TENANT
 
-- **Root domain** `ayopilih.id` → landing page marketing + register panitia.
-- **Subdomain tenant** `sman1.ayopilih.id` → ruang tenant.
-- **Dev lokal**: `sman1.localhost:3000` (harus jalan tanpa edit `/etc/hosts` di Chrome/Firefox modern).
+- **Root domain** `ayopilih.site` → landing page marketing + register panitia.
+- **Subdomain tenant** `sman1.ayopilih.site` → ruang tenant.
+- **Dev lokal**: `sman1.localhost` dengan port dev Next.js (harus jalan tanpa edit `/etc/hosts` di Chrome/Firefox modern).
 - `middleware.ts` membaca `host`, mengekstrak `slug`, lalu rewrite ke `/tenant/[slug]/...`. (Garis bawah tidak boleh digunakan karena merupakan private folder di Next.js sehingga route di dalamnya tidak dapat diakses).
 - Isolasi data dijamin ganda: **filter `tenant_id` di query** + **Row Level Security (RLS) di Supabase**.
-- **Aturan Rute Ruang Tenant**: Browser hanya melihat subdomain dan path relatif pemilih (misal `sman1.localhost:3000/pemilihan-osis/bilik`). Middleware secara internal melakukan rewrite ke `/tenant/sman1/pemilihan-osis/bilik`. Karena itu, `slug` (sman1) tidak boleh masuk ke dalam string path routing atau redirect (seperti `/${slug}/${electionSlug}`) karena akan menghasilkan path duplikat dan 404. Gunakan `lib/routes.ts` untuk menangani pembentukan tautan.
+- **Aturan Rute Ruang Tenant**: Browser hanya melihat subdomain dan path relatif pemilih (misal `sman1.ayopilih.site/pemilihan-osis/bilik`). Middleware secara internal melakukan rewrite ke `/tenant/sman1/pemilihan-osis/bilik`. Karena itu, `slug` (sman1) tidak boleh masuk ke dalam string path routing atau redirect (seperti `/${slug}/${electionSlug}`) karena akan menghasilkan path duplikat dan 404. Gunakan `lib/routes.ts` untuk menangani pembentukan tautan.
 
 ### Peta Route
 
 ```
 app/
-├── (marketing)/                     # ayopilih.id
+├── (marketing)/                     # ayopilih.site
 │   ├── page.tsx                     # Landing page
 │   ├── harga/page.tsx               # Pricing
 │   ├── panduan/page.tsx             # Dokumentasi panitia
@@ -169,7 +169,7 @@ Aturan wajib setiap action:
 
 ## 8. PETA ROADMAP POTONGAN KUE (XP SLICES)
 
-- [x] **SLICE 1** — Setup proyek, koneksi Supabase, design token, landing page `ayopilih.id`
+- [x] **SLICE 1** — Setup proyek, koneksi Supabase, design token, landing page `ayopilih.site`
 - [x] **SLICE 2** — Middleware multi-tenant + wildcard subdomain + auth panitia (daftar/masuk/buat tenant)
 - [x] **SLICE 3** — Dashboard admin: CRUD pemilihan, mode voting, CRUD paslon + upload foto
 - [x] **SLICE 4** — Manajemen DPT: bulk upload + sanitasi + preview + generator token + export kartu token
